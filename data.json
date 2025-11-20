@@ -1,0 +1,75 @@
+{
+    "people": [
+        {
+            "name": "Daury Toribio",
+            "timezone": ".....",
+            "availability": [
+                {
+                    "day": "....",
+                    "start": "....",
+                    "end": "...."
+                },
+                {
+                    "day": "....",
+                    "start": "....",
+                    "end": "...." 
+                }
+
+            ]
+        },
+
+        {
+            "name": "Rex Esteban",
+            "timezone": ".....",
+            "availability": [
+                {
+                    "day": "....",
+                    "start": "....",
+                    "end": "...."
+                },
+                {
+                    "day": "....",
+                    "start": "....",
+                    "end": "...." 
+                }
+
+            ]
+        },
+
+        {
+            "name": "Joshua Brady",
+            "timezone": ".....",
+            "availability": [
+                {
+                    "day": "....",
+                    "start": "....",
+                    "end": "...."
+                },
+                {
+                    "day": "....",
+                    "start": "....",
+                    "end": "...." 
+                }
+
+            ]
+        }, 
+
+        {
+            "name": "Edwin Sorto",
+            "timezone": ".....",
+            "availability": [
+                {
+                    "day": "....",
+                    "start": "....",
+                    "end": "...."
+                },
+                {
+                    "day": "....",
+                    "start": "....",
+                    "end": "...." 
+                }
+
+            ]
+        }
+    ]
+}
