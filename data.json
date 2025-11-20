@@ -5,12 +5,12 @@
             "timezone": ".....",
             "availability": [
                 {
-                    "day": "....",
-                    "start": "....",
-                    "end": "...."
+                    "day": "Monday",
+                    "start": "...",
+                    "end": "..."
                 },
                 {
-                    "day": "....",
+                    "day": "Wednesday",
                     "start": "....",
                     "end": "...." 
                 }
