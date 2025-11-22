@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Game Scheduler</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main>
@@ -11,15 +12,29 @@
         <p>Schedule game time meetings with friends!</p>
         <h2>Schedule a Game Session</h2>
         <form id="eventForm">
-            <label for="eventName">Event Name:</label>
-            <input id="event" type="text" name="event" placeholder="Gaming Session"><br><br>
-            <label for="startTime">Start Time</label>
-            <input id="srartTime" type="text" name="startTime" placeholder="9 AM"><br><br>
-            <label for="endTime">End Time</label>
-            <input id="endTime" type="text" name="endTime" placeholder="5 PM"><br><br>
-            <label for="date">Date</label>
-            <input id="date" type="text" name="date" placeholder="November 21, 2025"><br><br>
+            <div class="form-row">
+                <label for="eventName">Event Name:</label>
+                <input id="event" type="text" name="event" placeholder="Gaming Session"><br><br>
+            </div>
+
+            <div class="form-row">
+                <label for="startTime">Start Time:</label>
+                <input id="srartTime" type="text" name="startTime" placeholder="9 AM"><br><br>
+            </div>
+
+            <div class="form-row">
+                <label for="endTime">End Time:</label>
+                <input id="endTime" type="text" name="endTime" placeholder="5 PM"><br><br>
+            </div>
+
+            <div class="form-row">
+                <label for="date">Date:</label>
+                <input id="date" type="text" name="date" placeholder="November 21, 2025"><br><br>
+            </div>
+
+            <button type="button" id="createBtn" name="createBtn">Create Event</button>
         </form>
     </main>
+    <script src="index.js"></script>
 </body>
 </html>
