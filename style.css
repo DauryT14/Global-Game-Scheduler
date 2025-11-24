@@ -42,6 +42,7 @@ main p{
 
 #createBtn:hover{
     background-color: rgb(37, 185, 37);
+    cursor: pointer;
 }
 
 .form-row{
