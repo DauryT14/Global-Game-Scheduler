@@ -1,3 +1,4 @@
+
 {
     "people": [
         {
@@ -5,16 +6,33 @@
             "timezone": ".....",
             "availability": [
                 {
+                    "day": "Sunday",
+                    "time": []
+                },
+                {
                     "day": "Monday",
-                    "start": "...",
-                    "end": "..."
+                    "time": []
+                },
+                {
+                    "day": "Tuesday",
+                    "time": []
                 },
                 {
                     "day": "Wednesday",
-                    "start": "....",
-                    "end": "...." 
+                    "time": []
+                },
+                {
+                    "day": "Thursday",
+                    "time": []
+                },
+                {
+                    "day": "Friday",
+                    "time": []
+                },
+                {
+                    "day": "Saturday",
+                    "time": []
                 }
-
             ]
         },
 
@@ -22,15 +40,9 @@
             "name": "Rex Esteban",
             "timezone": "Asia/Manila",
             "availability": [
-                {
-                    "day": "Monday",
-                    "time": [6, 7, 12, 13, 17, 18, 19, 20, 21]
-                },
-                {
-                    "day": "Wednesday",
-                    "time": [6, 7, 12, 13, 17, 18, 19, 20, 21]
-                }
-
+                {"day": "Monday", "time": [6, 7, 12, 13, 17, 18, 19, 20, 21]},
+                {"day": "Wednesday", "time": [6, 7, 12, 13, 17, 18, 19, 20, 21]},
+                {"day": "Friday", "time": [11, 13, 14, 15, 18, 19, 20]}
             ]
         },
 
@@ -39,14 +51,32 @@
             "timezone": ".....",
             "availability": [
                 {
-                    "day": "....",
-                    "start": "....",
-                    "end": "...."
+                    "day": "Sunday",
+                    "time": []
                 },
                 {
-                    "day": "....",
-                    "start": "....",
-                    "end": "...." 
+                    "day": "Monday",
+                    "time": []
+                },
+                {
+                    "day": "Tuesday",
+                    "time": []
+                },
+                {
+                    "day": "Wednesday",
+                    "time": []
+                },
+                {
+                    "day": "Thursday",
+                    "time": []
+                },
+                {
+                    "day": "Friday",
+                    "time": []
+                },
+                {
+                    "day": "Saturday",
+                    "time": []
                 }
 
             ]
@@ -57,16 +87,33 @@
             "timezone": ".....",
             "availability": [
                 {
-                    "day": "....",
-                    "start": "....",
-                    "end": "...."
+                    "day": "Sunday",
+                    "time": []
                 },
                 {
-                    "day": "....",
-                    "start": "....",
-                    "end": "...." 
+                    "day": "Monday",
+                    "time": []
+                },
+                {
+                    "day": "Tuesday",
+                    "time": []
+                },
+                {
+                    "day": "Wednesday",
+                    "time": []
+                },
+                {
+                    "day": "Thursday",
+                    "time": []
+                },
+                {
+                    "day": "Friday",
+                    "time": []
+                },
+                {
+                    "day": "Saturday",
+                    "time": []
                 }
-
             ]
         }
     ]
