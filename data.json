@@ -20,17 +20,15 @@
 
         {
             "name": "Rex Esteban",
-            "timezone": ".....",
+            "timezone": "Asia/Manila",
             "availability": [
                 {
-                    "day": "....",
-                    "start": "....",
-                    "end": "...."
+                    "day": "Monday",
+                    "time": [6, 7, 12, 13, 17, 18, 19, 20, 21]
                 },
                 {
-                    "day": "....",
-                    "start": "....",
-                    "end": "...." 
+                    "day": "Wednesday",
+                    "time": [6, 7, 12, 13, 17, 18, 19, 20, 21]
                 }
 
             ]
