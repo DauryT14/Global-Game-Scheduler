@@ -3,7 +3,7 @@
     "people": [
         {
             "name": "Daury Toribio",
-            "timezone": "America/Santo Domingo",
+            "timezone": "America/Santo_Domingo",
             "availability": [
                 {"day": "Sunday", "time": [17, 18, 19, 20, 21]},
                 {"day": "Monday", "time": [8, 9, 10, 11, 12, 16, 17, 18]},
