@@ -1,3 +1,8 @@
+body{
+    margin: 0;
+    min-height: 100vh;
+}
+
 main h1{
     font-size: 1rem;
     font-family:Arial, Helvetica, sans-serif;
@@ -51,18 +56,24 @@ main p{
     font-style: normal;
     font-weight: 100;
 }
+.form-row select{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    border-radius: 5px;
+    outline: none;
+    width: 150px;
+    padding: 5px;
+    color: black;
+    appearance: none;
+}
+
 .form-row input{
     font-size: 1.2rem;
     font-family:Arial, Helvetica, sans-serif;
     font-style: normal;
     border-style: solid;
-    border-color: rgb(239, 236, 236);
+    border-color: rgb(0, 0, 0);
     caret-color: black;
     border-radius: 5px;
-}
-
-.form-row input:focus{
     outline: none;
-    box-shadow: none;
 }
-
