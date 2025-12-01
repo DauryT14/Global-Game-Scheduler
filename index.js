@@ -9,8 +9,16 @@ function createEvent(){
     const endTime = document.getElementById("endTime").value;
     const dateInput = document.getElementById("date").value;
     
-    if (eventName == ""){
+    if (!eventName){
         alert('Please enter an event name!');
+        return;
+    }
+
+    const startHour = parseInt(startTime.split(":")[0]);
+    const endHour = parseInt(endTime.split(":")[0]);
+
+    if (startHour >= endHour) {
+        alert('Start time must be earilier than end time!');
         return;
     }
 
@@ -19,10 +27,10 @@ function createEvent(){
         return;
     }
 
-    if (dateInput == ""){
+    if (!dateInput){
         alert('Please enter a date!');
         return;
     }
-
-    window.location.href = "graph.html";
+    // Pass data to the next page
+    window.location.href = `graph.html?event=${encodeURIComponent(eventName)}&date=${dateInput}` + `&start=${startTime}&end=${endTime}`;
 }
