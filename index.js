@@ -1,7 +1,10 @@
-document.getElementById("eventForm").addEventListener('submit', function(event){
-    event.preventDefault();
-    createEvent();
-});
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('eventForm');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        createEvent();
+    }}'
+}};
 
 function createEvent(){
     const eventName = document.getElementById("event").value.trim();
@@ -13,9 +16,6 @@ function createEvent(){
         alert('Please enter an event name!');
         return;
     }
-
-    const startHour = parseInt(startTime.split(":")[0]);
-    const endHour = parseInt(endTime.split(":")[0]);
 
     if (startHour >= endHour) {
         alert('Start time must be earilier than end time!');
@@ -31,6 +31,16 @@ function createEvent(){
         alert('Please enter a date!');
         return;
     }
-    // Pass data to the next page
-    window.location.href = `graph.html?event=${encodeURIComponent(eventName)}&date=${dateInput}` + `&start=${startTime}&end=${endTime}`;
+
+    // Build simple event object
+    const eventObj = {
+        name: eventName,
+        date: dateInput,
+        start: startTime,
+        end: endTime
+    };
+
+    // Save to local storage and 'graph.html' can read it
+    localStorage.setItem('ggs_event', JSON.stringify(eventObj));
+    window.location.href = 'graph.html';
 }
