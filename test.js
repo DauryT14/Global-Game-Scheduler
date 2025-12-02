@@ -1,7 +1,7 @@
-import data from './data.json' assert {type: 'json'};
-import {getOffset, getTZIdentifier} from './tools.js'
+//import data from './data.json' assert {type: 'json'};
+import {getOffset, convertToMatrix} from './tools.js'
 
-var person = data
+//var person = data
 
 console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
 console.log(Date.UTC())
@@ -20,3 +20,5 @@ console.log("1 and 3 connected? ", uf.find(1) === uf.find(3));
 console.log("1 and 5 connected? ", uf.find(1) === uf.find(5));
 
 console.log("Parents:", uf.parent);
+
+convertToMatrix();

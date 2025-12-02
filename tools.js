@@ -4,8 +4,30 @@ function getOffset(){
     return offsetHour
 }
 
-function convertToMatrix(person, hours){
+function convertToMatrix(){
+    const data = { /* your full JSON here */ };
+    const people = data.people;
 
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const hours = Array.from({ length: 24 }, (_, i) => i);
+
+    // Create 7 rows × 24 columns grid
+    const grid = Array.from({ length: 7 }, () =>
+        Array.from({ length: 24 }, () => [])
+    );
+
+    // Fill grid
+    people.forEach(person => {
+        person.availability.forEach(slot => {
+            const dayIndex = days.indexOf(slot.day);
+
+        slot.time.forEach(hour => {
+            grid[dayIndex][hour].push(person.name);
+            });
+        });
+    });
+
+    return(grid);
 }
 
 class UnionFind {

@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+/* Holds multiple graphs side-by-side */
+.graph-container {
+    display: inline-block;      /* side-by-side */
+    vertical-align: top;        /* align top edges */
+    margin-right: 40px;         /* spacing between graphs */
+    text-align: center;         /* centers header */
+}
+
+/* Style for canvas */
+.graph-container canvas {
+    border: 1px solid black;
+    margin-top: 10px;
+}
+
+.graph-wrapper {
+    text-align: center;   /* center inline-block elements */
+    width: 100%;
+}

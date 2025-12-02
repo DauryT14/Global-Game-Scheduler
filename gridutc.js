@@ -6,14 +6,11 @@ const canvas = document.getElementById("gridCanvas");
 const ctx = canvas.getContext("2d");
 
 // Grid size
-const rows = 24;  
-const cols = 7;   
+const rows = 24;  // hours (UTC)
+const cols = 7;   // days (UTC week)
 const cellWidth = canvas.width / (cols + 1);
 const cellHeight = canvas.height / (rows + 1);
 
-// Browser Local Time Offset (in hours)
-const localOffset = -(new Date().getTimezoneOffset() / 60);  
-// (UTC+offset)
 
 // Load data.json
 fetch("./data.json")
@@ -21,91 +18,72 @@ fetch("./data.json")
     .then(data => {
         const people = data.people;
 
-        // Grid stored in UTC first
-        const utcGrid = Array.from({ length: 24 }, () =>
+        // Create grid[hour][day]
+        const grid = Array.from({ length: 24 }, () =>
             Array.from({ length: 7 }, () => [])
         );
 
-        // Convert all users' availability to UTC grid
+        // Process each person's availability in UTC
         people.forEach(person => {
             person.availability.forEach(slot => {
                 const localDay = slot.day;
                 const tz = person.timezone;
 
                 slot.time.forEach(localHour => {
+
+                    // Convert (localDay + localHour + timezone) → UTC hour + UTC day
                     const { utcDay, utcHour } = convertToUTC(localDay, localHour, tz);
-                    utcGrid[utcHour][utcDay].push(person.name);
+
+                    // Insert into the grid
+                    grid[utcHour][utcDay].push(person.name);
                 });
             });
         });
 
-        // Convert UTC grid → LOCAL grid for display
-        const localGrid = convertUTCGridToLocal(utcGrid);
-
-        drawGrid(localGrid);
+        drawGrid(grid);
     })
     .catch(err => console.error("Error loading data.json:", err));
 
 
-/*********************** UTC → LOCAL GRID SHIFT ************************/
-function convertUTCGridToLocal(utcGrid) {
-    const grid = Array.from({ length: 24 }, () =>
-        Array.from({ length: 7 }, () => [])
-    );
 
-    for (let utcHour = 0; utcHour < 24; utcHour++) {
-        for (let day = 0; day < 7; day++) {
-
-            // Shift the hour
-            let localHour = utcHour + localOffset;
-
-            let localDay = day;
-
-            // Wrap around
-            if (localHour < 0) {
-                localHour += 24;
-                localDay = (day - 1 + 7) % 7;
-            }
-            if (localHour >= 24) {
-                localHour -= 24;
-                localDay = (day + 1) % 7;
-            }
-
-            // Copy data
-            grid[localHour][localDay] = grid[localHour][localDay].concat(utcGrid[utcHour][day]);
-        }
-    }
-
-    return grid;
-}
-
-
-/*********************** LOCAL → UTC PER USER ************************/
+/**********************************************************
+ * Convert local time from ANY timezone → UTC day + hour
+ **********************************************************/
 function convertToUTC(localDayName, localHour, timezone) {
+    // Skip invalid timezones (empty or placeholder)
     if (!timezone || timezone === ".....") {
-        return { utcDay: 0, utcHour: 0 };
+        return { utcDay: 0, utcHour: 0 };  // default fallback
     }
 
+    // Get numeric day index (0=Sun)
     const dayIndex = days.indexOf(localDayName.slice(0, 3));
 
+    // Build a full local datetime string
     const localDate = new Date(`2025-01-05T${String(localHour).padStart(2, "0")}:00:00`);
 
-    const localString = localDate.toLocaleString("en-US", { timeZone: timezone });
-    const trueDate = new Date(localString);
+    // Force the Date to interpret this as the person's timezone
+    const utcString = localDate.toLocaleString("en-US", { timeZone: timezone });
 
+    // Reconstruct the Date into actual UTC
+    const trueDate = new Date(utcString);
+
+    // Now extract the real UTC components
     let utcHour = trueDate.getUTCHours();
-
     let utcDay = (dayIndex + (trueDate.getUTCDate() - localDate.getUTCDate())) % 7;
+
     if (utcDay < 0) utcDay += 7;
 
     return { utcDay, utcHour };
 }
 
 
-/*********************** DRAW THE FINAL (LOCAL) GRID ************************/
+
+/**********************************************************
+ * Draw grid with white→blue shading and labels
+ **********************************************************/
 function drawGrid(grid) {
 
-    // Maximum people count for shading
+    // Get max people in any cell
     let maxPeople = 0;
     for (let h = 0; h < rows; h++) {
         for (let d = 0; d < cols; d++) {
@@ -117,35 +95,35 @@ function drawGrid(grid) {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    // Day labels
+    // ---- Day labels ----
     for (let d = 0; d < cols; d++) {
         ctx.fillStyle = "black";
         ctx.fillText(days[d], (d + 1) * cellWidth + cellWidth / 2, cellHeight / 2);
     }
 
-    // Hour labels (local)
+    // ---- Hour labels ----
     for (let h = 0; h < rows; h++) {
         ctx.fillStyle = "black";
         ctx.fillText(h.toString(), cellWidth / 2, (h + 1) * cellHeight + cellHeight / 2);
     }
 
-    // Draw cells
+    // ---- Draw cells with blue fading ----
     for (let hour = 0; hour < rows; hour++) {
         for (let day = 0; day < cols; day++) {
 
             const count = grid[hour][day].length;
 
-            const x = (day + 1) * cellWidth;
-            const y = (hour + 1) * cellHeight;
+            let x = (day + 1) * cellWidth;
+            let y = (hour + 1) * cellHeight;
 
             if (count > 0) {
-                const fraction = count / maxPeople;
+                let fraction = count / maxPeople;
 
                 // White → Blue gradient
-                const blue = Math.floor(255 * fraction);
-                const r = 255 - blue;
-                const g = 255 - blue;
-                const b = 255;
+                let blue = Math.floor(255 * fraction);
+                let r = 255 - blue;
+                let g = 255 - blue;
+                let b = 255;
 
                 ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
             } else {
@@ -153,6 +131,7 @@ function drawGrid(grid) {
             }
 
             ctx.fillRect(x, y, cellWidth, cellHeight);
+
             ctx.strokeStyle = "#333";
             ctx.strokeRect(x, y, cellWidth, cellHeight);
         }
