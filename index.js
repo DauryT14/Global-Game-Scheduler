@@ -24,5 +24,12 @@ function createEvent(){
         return;
     }
 
+    const today = new Date().toISOString().split('T')[0];
+    
+    if (dateInput < today) {
+        alert("Cannot create events in the past!");
+        return;
+    }
+
     window.location.href = "graph.html";
 }
