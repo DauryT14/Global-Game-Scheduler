@@ -14,7 +14,7 @@ function createEvent(){
         return;
     }
 
-    if (startTime == endTime){
+    if (startTime == endTime || endTime < startTime){
         alert('Please enter a valid start time and end time');
         return;
     }
