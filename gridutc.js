@@ -18,8 +18,18 @@ let savedUTCGrid = null;
 document.getElementById("toggle2").addEventListener("click", () => {
     showBestTimes = !showBestTimes;
     redraw();
-    document.getElementById("toggle2").innerText =
-        showBestTimes ? "Show Normal View" : "Show Top 5 Times";
+    const button = document.getElementById("toggle2");
+
+    if (showBestTimes){
+        button.innerText = "Show Normal View";
+        button.classList.add('active');
+    }
+    else{
+        button.innerText = "Show Top 5 Times";
+        button.classList.remove('active');
+    }
+    //document.getElementById("toggle2").innerText =
+        //showBestTimes ? "Show Normal View" : "Show Top 5 Times";
 });
 
 // Load data.json

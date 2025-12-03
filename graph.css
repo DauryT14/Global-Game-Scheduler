@@ -48,6 +48,7 @@ body {
     background-color: gray;
     margin-left: 70%;
     position: relative;
+    transition: all 0.3s ease;
 }
 
 .bestTimesBtn:hover{
@@ -56,12 +57,5 @@ body {
 
 .bestTimesBtn:active{
     background-color: green;
-}
-
-.bestTimesBtn.off{
-    background-color: gray;
-}
-
-.bestTimesBtn.on{
-    background-color: green;
+    color: white;
 }

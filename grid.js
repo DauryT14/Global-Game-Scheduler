@@ -19,8 +19,19 @@ let savedLocalGrid = null;
 document.getElementById("toggle1").addEventListener("click", () => {
     showBestTimes = !showBestTimes;
     redraw();
-    document.getElementById("toggle1").innerText =
-        showBestTimes ? "Show Normal View" : "Show Best Times";
+
+    const button = document.getElementById("toggle1");
+
+    if (showBestTimes){
+        button.innerText = "Show Normal View";
+        button.classList.add('active');
+    }
+    else{
+        button.innerText = "Show Top 5 Times";
+        button.classList.remove('active');
+    }
+    //document.getElementById("toggle1").innerText =
+        //showBestTimes ? "Show Normal View" : "Show Best Times";
 });
 
 // Browser Local Time Offset (in hours)
