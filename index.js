@@ -32,13 +32,5 @@ function createEvent(){
         return;
     }
 
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    if (chosenDate < today){
-        alert('Please enter a date today or in the future.');
-        return;
-    }
-
     window.location.href = "graph.html";
 }
