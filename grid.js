@@ -27,11 +27,11 @@ document.getElementById("toggle1").addEventListener("click", () => {
         button.classList.add('active');
     }
     else{
-        button.innerText = "Show Top 5 Times";
+        button.innerText = "Show Best Times";
         button.classList.remove('active');
     }
     //document.getElementById("toggle1").innerText =
-        //showBestTimes ? "Show Normal View" : "Show Best Times";
+    //    showBestTimes ? "Show Normal View" : "Show Best Times";
 });
 
 // Browser Local Time Offset (in hours)

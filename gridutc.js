@@ -25,11 +25,11 @@ document.getElementById("toggle2").addEventListener("click", () => {
         button.classList.add('active');
     }
     else{
-        button.innerText = "Show Top 5 Times";
+        button.innerText = "Show Best Times";
         button.classList.remove('active');
     }
     //document.getElementById("toggle2").innerText =
-        //showBestTimes ? "Show Normal View" : "Show Top 5 Times";
+    //    showBestTimes ? "Show Normal View" : "Show Best Times";
 });
 
 // Load data.json
