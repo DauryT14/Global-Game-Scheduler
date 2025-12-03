@@ -24,10 +24,19 @@ function createEvent(){
         return;
     }
 
-    const today = new Date().toISOString().split('T')[0];
-    
-    if (dateInput < today) {
-        alert("Cannot create events in the past!");
+    const chosenDate = new Date(dateInput);
+    const chosenYear = chosenDate.getFullYear();
+
+    if (chosenYear < 2025){
+        alert('Please enter a valid date (year must be 2025 or later).');
+        return;
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (chosenDate < today){
+        alert('Please enter a date today or in the future.');
         return;
     }
 
