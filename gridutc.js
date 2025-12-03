@@ -125,7 +125,7 @@ function drawLabels() {
 
     // Hour labels (UTC)
     for (let h = 0; h < rows; h++) {
-        ctx.fillText(h, cellWidth / 2, (h + 1) * cellHeight + cellHeight / 2);
+        ctx.fillText(h.toString() + ":00", cellWidth / 2, (h + 1) * cellHeight + cellHeight / 2);
     }
 }
 
