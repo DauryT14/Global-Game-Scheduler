@@ -3,6 +3,13 @@ document.getElementById("eventForm").addEventListener('submit', function(event){
     createEvent();
 });
 
+document.querySelectorAll('.bestTimesBtn').forEach(button =>{
+    button.addEventListener('click', function(){
+        this.classList.toggle('active');
+        this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';
+    });
+});
+
 function createEvent(){
     const eventName = document.getElementById("event").value.trim();
     const startTime = document.getElementById("startTime").value;

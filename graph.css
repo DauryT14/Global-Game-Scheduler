@@ -22,7 +22,7 @@ body {
     width: 100%;
 }
 
-button{
+.changeTimesBtn{
     padding: 10px 20px;
     border-radius: 8px;
     border: none;
@@ -34,7 +34,34 @@ button{
     margin-left: 44%;
 }
 
-button:hover{
+.changeTimesBtn:hover{
     background-color: rgb(41, 82, 151);
     cursor: pointer;
+}
+
+.bestTimesBtn{
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+    color: white;
+    background-color: gray;
+    margin-left: 70%;
+    position: relative;
+}
+
+.bestTimesBtn:hover{
+    cursor: pointer;
+}
+
+.bestTimesBtn:active{
+    background-color: green;
+}
+
+.bestTimesBtn.off{
+    background-color: gray;
+}
+
+.bestTimesBtn.on{
+    background-color: green;
 }
