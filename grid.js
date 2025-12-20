@@ -42,7 +42,7 @@ const localOffset = -(new Date().getTimezoneOffset() / 60);
 fetch("./data.json")
     .then(res => res.json())
     .then(data => {
-        const people = data.people;
+        const people = data.people.slice(0,193);
 
         // Grid stored in UTC first
         const utcGrid = Array.from({ length: 24 }, () =>

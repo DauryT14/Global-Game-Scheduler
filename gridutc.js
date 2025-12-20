@@ -36,7 +36,7 @@ document.getElementById("toggle2").addEventListener("click", () => {
 fetch("./data.json")
     .then(res => res.json())
     .then(data => {
-        const people = data.people;
+        const people = data.people.slice(0,193);
 
         // Create empty UTC grid[hour][day]
         const grid = Array.from({ length: 24 }, () =>
