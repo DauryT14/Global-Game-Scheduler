@@ -273,11 +273,27 @@ canvas.addEventListener('click', function(event) {
         const count = savedLocalGrid[hour][day].length;
         const people = savedLocalGrid[hour][day];
         
-        if (count > 0) {
+        if (count > 1 || count == 0) {
             
             alert(
                 `${days[day]} at ${hour}:00\n` +
                 `${count} people available:\n` +
+                people.join('\n')
+            );
+            
+            
+            ctx.fillStyle = 'rgba(255, 255, 0, 0.3)';
+            ctx.fillRect(
+                (day + 1) * cellWidth,
+                (hour + 1) * cellHeight,
+                cellWidth,
+                cellHeight
+            );
+        }
+        else if (count == 1){
+            alert(
+                `${days[day]} at ${hour}:00\n` +
+                `${count} person available:\n` +
                 people.join('\n')
             );
             
