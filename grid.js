@@ -256,3 +256,39 @@ function redraw() {
         drawGrid(savedLocalGrid);
     }
 }
+
+
+canvas.addEventListener('click', function(event) {
+    if (!savedLocalGrid) return;
+    
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    
+   
+    const day = Math.floor((x - cellWidth) / cellWidth);
+    const hour = Math.floor((y - cellHeight) / cellHeight);
+    
+    if (day >= 0 && day < cols && hour >= 0 && hour < rows) {
+        const count = savedLocalGrid[hour][day].length;
+        const people = savedLocalGrid[hour][day];
+        
+        if (count > 0) {
+            
+            alert(
+                `${days[day]} at ${hour}:00\n` +
+                `${count} people available:\n` +
+                people.join('\n')
+            );
+            
+            
+            ctx.fillStyle = 'rgba(255, 255, 0, 0.3)';
+            ctx.fillRect(
+                (day + 1) * cellWidth,
+                (hour + 1) * cellHeight,
+                cellWidth,
+                cellHeight
+            );
+        }
+    }
+});
