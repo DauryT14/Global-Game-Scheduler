@@ -257,6 +257,11 @@ function redraw() {
     }
 }
 
+function getEventNameFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('event') || "Untitled Event";
+}
+
 
 canvas.addEventListener('click', function(event) {
     if (!savedLocalGrid) return;
@@ -272,10 +277,10 @@ canvas.addEventListener('click', function(event) {
     if (day >= 0 && day < cols && hour >= 0 && hour < rows) {
         const count = savedLocalGrid[hour][day].length;
         const people = savedLocalGrid[hour][day];
-        
+        const eventName = getEventNameFromURL();
         if (count > 1 || count == 0) {
-            
             alert(
+                `Event: ${eventName}\n` + 
                 `${days[day]} at ${hour}:00\n` +
                 `${count} people available:\n` +
                 people.join('\n')
@@ -292,6 +297,7 @@ canvas.addEventListener('click', function(event) {
         }
         else if (count == 1){
             alert(
+                `Event: ${eventName}\n` + 
                 `${days[day]} at ${hour}:00\n` +
                 `${count} person available:\n` +
                 people.join('\n')

@@ -42,5 +42,5 @@ function createEvent(){
         return;
     }
 
-    window.location.href = "graph.html";
+    window.location.href = "graph.html?event=" + encodeURIComponent(eventName);
 }
